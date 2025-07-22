@@ -1,0 +1,30 @@
+import random
+import time
+
+class IED:
+    def __init__(self):
+        self.sensors = ["Sensor1", "Sensor2"]
+        self.communication_module = "Module1"
+        self.intelligent_algorithms = lambda x: x * 1.4
+
+    def collect_data(self, sensor):
+        return random.uniform(0, 100)
+
+    def process_data(self, data):
+        return self.intelligent_algorithms(data)
+
+    def send_data(self, data):
+        print(f"Intelligent data sent to central system: {data}")
+
+    def run(self):
+        while True:
+            data = [self.collect_data(sensor) for sensor in self.sensors]
+            intelligent_data = [self.process_data(d) for d in data]
+            for idata in intelligent_data:
+                self.send_data(idata)
+            time.sleep(1)
+
+# Instantiate and run the IED system
+if __name__ == "__main__":
+    ied = IED()
+    ied.run()

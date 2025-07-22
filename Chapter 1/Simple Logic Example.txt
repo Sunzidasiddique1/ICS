@@ -1,0 +1,14 @@
+PROGRAM MAIN
+VAR
+    A: BOOL; (* Input A *)
+    B: BOOL; (* Input B *)
+    Y: BOOL; (* Output Y *)
+END_VAR
+
+(* Logic: Y = A AND B *)
+IF (A AND B) THEN
+    Y := TRUE;
+ELSE
+    Y := FALSE;
+END_IF;
+END_PROGRAM

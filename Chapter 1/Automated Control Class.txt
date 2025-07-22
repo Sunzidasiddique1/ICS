@@ -1,0 +1,13 @@
+class AutomatedControl:
+    def __init__(self):
+        self.task_complete = False
+
+    def perform_task(self):
+        # Simulate task automation
+        self.task_complete = True
+        return "Task Completed"
+
+# Example Usage
+ac = AutomatedControl()
+result = ac.perform_task()
+print(result)  # Output: Task Completed

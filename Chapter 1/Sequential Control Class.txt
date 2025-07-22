@@ -1,0 +1,12 @@
+class SequentialControl:
+    def __init__(self):
+        self.phase = 1
+
+    def next_phase(self):
+        self.phase += 1
+        return f"Phase {self.phase} started"
+
+# Example Usage:
+sequential_control = SequentialControl()
+current_phase = sequential_control.next_phase()
+print(f"Sequential Control: {current_phase}")

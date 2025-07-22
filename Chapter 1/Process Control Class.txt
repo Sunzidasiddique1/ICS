@@ -1,0 +1,16 @@
+class ProcessControl:
+    def __init__(self, desired_temperature):
+        self.desired_temperature = desired_temperature
+
+    def adjust_heater(self, current_temperature):
+        if current_temperature < self.desired_temperature:
+            return "Heater ON"
+        else:
+            return "Heater OFF"
+
+
+# Example usage
+pc = ProcessControl(desired_temperature=75)
+current_temp = 70
+action = pc.adjust_heater(current_temp)
+print(f"Current Temp: {current_temp}, Action: {action}")

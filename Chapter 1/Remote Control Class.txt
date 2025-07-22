@@ -1,0 +1,25 @@
+class RemoteControl:
+    def __init__(self):
+        self.system_status = "running"
+
+    def monitor_system(self):
+        return f"System Status: {self.system_status}"
+
+    def control_system(self, command):
+        if command == "shutdown":
+            self.system_status = "shut down"
+        return f"System {self.system_status}"
+
+# Example usage
+remote_control = RemoteControl()
+status = remote_control.monitor_system()
+print(f"Remote Monitoring: {status}")
+
+control_status = remote_control.control_system("shutdown")
+print(f"Remote Control: {control_status}")
+
+Output:
+
+Remote Monitoring: System Status: running
+Remote Control: System shut down
+
