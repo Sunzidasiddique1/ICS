@@ -1,0 +1,13 @@
+class FeedbackController:
+    def __init__(self, kp):
+        self.kp = kp
+
+    def compute(self, setpoint, measured_value):
+        error = setpoint - measured_value
+        return self.kp * error
+
+
+# Example Usage
+controller = FeedbackController(kp=0.5)
+output = controller.compute(setpoint=100, measured_value=90)
+print(f"Controller Output: {output}")  # Output: 5.0

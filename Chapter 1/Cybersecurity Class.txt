@@ -1,0 +1,18 @@
+class Cybersecurity:
+    def __init__(self):
+        self.access_granted = False
+
+    def verify_credentials(self, user, password):
+        if user == "admin" and password == "password123":
+            self.access_granted = True
+            return "Access Granted"
+        else:
+            return "Access Denied"
+
+# Example usage
+cybersecurity = Cybersecurity()
+security_check = cybersecurity.verify_credentials(user="admin", password="password123")
+print(f"Cybersecurity: {security_check}")
+
+Output:
+Cybersecurity: Access Granted

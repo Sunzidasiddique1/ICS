@@ -1,0 +1,18 @@
+class SetpointControl:
+    def __init__(self, setpoint):
+        self.setpoint = setpoint
+
+    def regulate(self, actual_value):
+        if actual_value < self.setpoint:
+            return "Increase"
+        elif actual_value > self.setpoint:
+            return "Decrease"
+        else:
+            return "Maintain"
+
+# Example Usage
+spc = SetpointControl(setpoint=50)
+print(spc.regulate(45))  # Output: Increase
+print(spc.regulate(55))  # Output: Decrease
+print(spc.regulate(50))  # Output: Maintain
+

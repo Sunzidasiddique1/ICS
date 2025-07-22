@@ -1,0 +1,23 @@
+ class DataLogger:
+    def __init__(self):
+        self.log = []
+
+    def log_data(self, data):
+        self.log.append(data)
+        return "Data logged"
+
+    def analyze_data(self):
+        return f"Analyzing {len(self.log)} data points"
+
+# Example usage
+data_logger = DataLogger()
+log_status = data_logger.log_data({"temperature": 70})
+print(f"Data Logging: {log_status}")
+
+analysis_result = data_logger.analyze_data()
+print(f"Data Analysis: {analysis_result}")
+
+
+Output:
+Data Logging: Data logged
+Data Analysis: Analyzing 1 data points

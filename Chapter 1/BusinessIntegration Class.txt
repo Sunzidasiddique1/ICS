@@ -1,0 +1,16 @@
+class BusinessIntegration:
+    def __init__(self, erp_system):
+        self.erp_system = erp_system
+
+    def sync_with_erp(self, production_data):
+        return f"Synced with {self.erp_system}: {production_data}"
+
+# Example usage
+business_integration = BusinessIntegration(erp_system="SAP")
+sync_status = business_integration.sync_with_erp({"units_produced": 500})
+print(f"Business Integration: {sync_status}")
+
+Output:
+Business Integration: Synced with SAP: {'units_produced': 500}
+
+

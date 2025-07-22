@@ -1,0 +1,16 @@
+class FeedbackController:
+    def __init__(self, kp):
+        self.kp = kp  # Proportional gain
+
+    def compute(self, setpoint, measured_value):
+        error = setpoint - measured_value
+        control_output = self.kp * error
+        return control_output
+
+# Example usage
+controller = FeedbackController(kp=2.0)
+setpoint = 100
+measured_value = 90
+control_output = controller.compute(setpoint, measured_value)
+
+print(f"Control Output: {control_output}")

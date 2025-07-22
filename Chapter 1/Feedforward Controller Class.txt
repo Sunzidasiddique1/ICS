@@ -1,0 +1,13 @@
+class FeedforwardController:
+    def __init__(self, gain):
+        self.gain = gain
+
+    def compute(self, setpoint):
+        return self.gain * setpoint
+
+# Example Usage:
+feedforward = FeedforwardController(gain=1.5)
+setpoint = 100
+control_output = feedforward.compute(setpoint)
+ComprehensiveOverviewofIndustrialControlSystemsICS:Evolution,Components,andSecurityChallenges
+print(f"Feedforward Control Output: {control_output}")
