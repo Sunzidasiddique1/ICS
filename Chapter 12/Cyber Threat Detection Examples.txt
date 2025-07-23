@@ -1,0 +1,41 @@
+import re
+from collections import defaultdict
+
+# Sample log data
+log_data = [
+    "2024-12-25 12:00:00 - User login from IP 192.168.1.100 Success",
+    "2024-12-25 12:05:00 - User login from IP 192.168.1.101 Failed",
+    "2024-12-25 12:10:00 - Unauthorized access attempt on /admin - IP 192.168.1.102",
+    "2024-12-25 12:15:00 - User login from IP 192.168.1.100 Success",
+    "2024-12-25 12:20:00 - User login from IP 192.168.1.101 Success",
+    "2024-12-25 12:25:00 - Unusual high traffic from IP 192.168.1.103"
+]
+
+# Define known patterns for suspicious activities
+suspicious_patterns = [
+    re.compile(r"Failed"),
+    re.compile(r"Unauthorized access attempt"),
+    re.compile(r"Unusual high traffic")
+]
+
+# Detect misuse and anomalies
+def detect_threats(log_data, suspicious_patterns):
+    detected_threats = defaultdict(list)
+    for log_entry in log_data:
+        for pattern in suspicious_patterns:
+            if pattern.search(log_entry):
+                detected_threats[pattern.pattern].append(log_entry)
+    return detected_threats
+
+# Main process
+detected_threats = detect_threats(log_data, suspicious_patterns)
+
+# Output the detected threats
+if detected_threats:
+    print("Detected Threats:")
+    for pattern, logs in detected_threats.items():
+        print(f"\nPattern: {pattern}")
+        for log in logs:
+            print(f"- {log}")
+else:
+    print("No threats detected.")
