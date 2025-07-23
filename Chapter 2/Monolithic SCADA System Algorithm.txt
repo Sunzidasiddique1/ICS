@@ -1,0 +1,23 @@
+Initialize:
+    single_master_station
+    rtus[] = array of Remote Terminal Unit (RTU) connections
+    database = local_database
+    hmi = single_workstation_interface
+
+Main Process:
+    while system_running:
+        for rtu in rtus:
+            data = poll_rtu(rtu)                # Input: Data from RTU (e.g., temperature, pressure)
+            processed_data = process_data(data) # Process raw data
+            store_data(database, processed_data) # Output: Store processed data in the database
+            update_hmi(processed_data)           # Output: Display data on the Human-Machine Interface (HMI)
+
+        if operator_command_received:
+            validate_command()                   # Input: Operator command to modify system behavior
+            send_command_to_rtu()                # Output: Send command to RTU
+            log_action()                        # Output: Log operator's action for audit
+
+Error Handling:
+    if communication_failure:
+        activate_backup_system()                 # Output: Switch to backup system
+        notify_operator()                        # Output: Alert operator of communication failure
