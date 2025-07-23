@@ -1,0 +1,18 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SensorData {
+    struct Record {
+        uint timestamp;
+        uint temperature;
+        uint pressure;
+    }
+
+    mapping(uint => Record) public records;
+    uint public recordCount;
+
+    function logSensorData(uint _temperature, uint _pressure) public {
+        records[recordCount] = Record(block.timestamp, _temperature, _pressure);
+        recordCount++;
+    }
+}

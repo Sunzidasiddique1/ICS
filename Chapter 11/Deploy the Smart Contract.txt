@@ -1,0 +1,9 @@
+// File: migrations/2_deploy_sensor_data.js
+
+const SensorData = artifacts.require("SensorData");
+
+module.exports = async function (deployer) {
+  await deployer.deploy(SensorData);
+};
+
+ 
