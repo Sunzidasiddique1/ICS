@@ -1,0 +1,22 @@
+class Firewall:
+    def __init__(self):
+        self.rules = []
+
+    def add_rule(self, rule: str) -> None:
+        """Adds a new rule to the firewall."""
+        self.rules.append(rule)
+        print(f"Rule added: {rule}")
+
+    def check_traffic(self, traffic: str) -> str:
+        """Checks if the given traffic matches any blocking rules."""
+        for rule in self.rules:
+            if rule.split(":")[1] in traffic:
+                return "Traffic blocked"
+        return "Traffic allowed"
+
+# Example usage
+firewall = Firewall()
+firewall.add_rule("BLOCK:192.168.0.1")
+traffic = "192.168.0.1 -> 192.168.0.2"
+result = firewall.check_traffic(traffic)
+print(result)
