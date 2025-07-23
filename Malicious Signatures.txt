@@ -1,0 +1,4 @@
+ malicious_signatures = []
+ re.compile(r"SIGNATURE_1234"),
+ re.compile(r"SIGNATURE_5678"),
+ re.compile(r"SIGNATURE_9101")
