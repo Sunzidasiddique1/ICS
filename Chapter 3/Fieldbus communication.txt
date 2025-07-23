@@ -1,0 +1,12 @@
+Begin
+    Initialize communication master
+    Assign time slots to field devices
+    For each field device:
+        Poll device for data
+        If device status is active then
+            Transmit control commands based on device status
+        Else
+            Handle device errors and retry
+        End If
+    End For
+End

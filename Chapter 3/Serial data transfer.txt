@@ -1,0 +1,9 @@
+Begin
+    Set baud rate, data bits, parity, and stop bits
+    Open serial port
+    While data to send exists
+        Transmit data byte-by-byte
+        Wait for acknowledgment from the receiver
+    End While
+    Close port after data transfer is complete
+End

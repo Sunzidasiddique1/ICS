@@ -1,0 +1,9 @@
+ Begin
+ Discover network neighbors;
+ Build routing table using AODV protocol;
+ Select optimal path to the destination;
+ Transmit data packets through the mesh network;
+ 	if (route changes detected) {
+ 	Update routing table;
+ 	}
+ End

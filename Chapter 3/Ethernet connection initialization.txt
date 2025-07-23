@@ -1,0 +1,9 @@
+Function InitializeEthernetConnection(ipAddress, port):
+    Create a new Ethernet socket
+    Set socket options (e.g., timeout, reuse address)
+    Try to connect to the ipAddress at the specified port
+    If connection successful:
+        Return socket connection object
+    Else:
+        Return error or null
+End

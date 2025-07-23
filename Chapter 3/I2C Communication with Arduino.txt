@@ -1,0 +1,17 @@
+ #include <Wire.h>
+
+void setup() {
+  Wire.begin();              // Join I2C bus
+  Serial.begin(9600);        // Start serial communication
+}
+
+void loop() {
+  Wire.requestFrom(8, 1);    // Request 1 byte from device with address 8
+
+  while (Wire.available()) {
+    char c = Wire.read();    // Receive a byte
+    Serial.println(c);       // Print the received byte
+  }
+
+  delay(1000);               // Wait before the next request
+}

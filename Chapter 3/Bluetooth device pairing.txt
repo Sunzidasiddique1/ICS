@@ -1,0 +1,12 @@
+Begin
+    Search for discoverable devices
+    Select target device from the list
+
+    if (pairing successful) then
+        Exchange pairing keys
+        Authenticate connection
+        Establish secure communication channel
+    else
+        Retry pairing process
+    end if
+End
