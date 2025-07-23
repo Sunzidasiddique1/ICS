@@ -1,0 +1,9 @@
+Begin
+ Establish communication graph between devices;
+ Allocate time slots for each device
+ communication;
+ if (link_quality < threshold) {
+ Adjust communication schedule dynamically;
+ }
+ Transmit and receive data within assigned slots;
+ End

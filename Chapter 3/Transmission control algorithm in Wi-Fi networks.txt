@@ -1,0 +1,18 @@
+Begin
+    Get CSI from the channel prediction algorithm
+    Get network traffic information
+    Generate one empty slot (B = 0) during each unit of time
+
+    if (channel_state == GOOD_BER) then
+        buffer_length = 3  // optimum buffer unit length
+        slot_status = busy
+        Transmit by combining up to three MPDUs
+    else if (channel_state == BAD_BER) then
+        buffer_length = 1  // same as 802.11b DCF
+        slot_status = busy
+        Transmit a single MPDU
+    else
+        Pause packet transmissions
+        Wait for the next empty slot
+    end if
+End
