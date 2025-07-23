@@ -1,0 +1,6 @@
+Input:
+ Logging sensor data (temperature: 25°C, pressure: 100 kPa)
+ 1 await logSensorData(25, 100);
+ Output:
+ The sensor data is logged to the blockchain, and the records mapping in the
+ smart contract is updated.
