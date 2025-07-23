@@ -1,0 +1,50 @@
+import re
+from collections import defaultdict
+
+# Sample file contents
+file_contents = [
+    "This is a normal file content.",
+    "This file contains a malicious signature: SIGNATURE_1234.",
+    "Another file content with no issues.",
+    "Warning! Malicious code detected: SIGNATURE_5678.",
+    "File contains a benign text."
+]
+
+# Known malicious signatures
+malicious_signatures = [
+    re.compile(r"SIGNATURE_1234"),
+    re.compile(r"SIGNATURE_5678"),
+    re.compile(r"SIGNATURE_9101")
+]
+
+# Detect malicious inclusions
+def detect_malicious_inclusions(file_contents, malicious_signatures):
+    detected_malicious = defaultdict(list)
+    for i, content in enumerate(file_contents):
+        for signature in malicious_signatures:
+            if signature.search(content):
+                detected_malicious[signature.pattern].append((i, content))
+    return detected_malicious
+
+# Main process
+detected_malicious = detect_malicious_inclusions(file_contents, malicious_signatures)
+
+# Output the detected malicious inclusions
+if detected_malicious:
+    print("Detected Malicious Inclusions:")
+    for signature, entries in detected_malicious.items():
+        print(f"\nSignature: {signature}")
+        for entry in entries:
+            print(f"- File {entry[0]}: {entry[1]}")
+else:
+    print("No malicious inclusions detected.")
+
+
+
+file_contents = []
+ "This is a normal file content.",
+ "This file contains a malicious signature: SIGNATURE_1234.
+ ",
+ "Another file content with no issues.",
+ "Warning! Malicious code detected: SIGNATURE_5678.",
+ "File contains a benign text."
