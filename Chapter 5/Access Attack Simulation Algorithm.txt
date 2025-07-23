@@ -1,0 +1,28 @@
+# Define potential access methods
+access_methods = [
+    "PasswordCracking",
+    "SocialEngineering",
+    "ExploitingVulnerabilities",
+    "ManInTheMiddle",
+    "SessionHijacking"
+]
+
+# Simulate access attack
+def simulate_access_attack(access_method, target):
+    if access_method == "PasswordCracking":
+        return f"Attempting to crack password for {target}"
+    elif access_method == "SocialEngineering":
+        return f"Attempting social engineering on {target}"
+    elif access_method == "ExploitingVulnerabilities":
+        return f"Exploiting known vulnerabilities in {target}"
+    elif access_method == "ManInTheMiddle":
+        return f"Performing Man-in-the-Middle attack on communication to {target}"
+    elif access_method == "SessionHijacking":
+        return f"Hijacking session for {target}"
+
+# Main process
+targets = ["WebServer", "DatabaseServer", "UserAccount"]
+for target in targets:
+    for method in access_methods:
+        attack_result = simulate_access_attack(method, target)
+        print(attack_result)
