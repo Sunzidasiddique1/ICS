@@ -1,0 +1,41 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def plotScatterMatrix(df, plotSize, textSize):
+    # Keep only numerical columns
+    df = df.select_dtypes(include=[np.number])
+    
+    # Remove rows and columns with NaN values
+    df = df.dropna(axis=1)
+    
+    # Keep only columns with more than one unique value
+    df = df[[col for col in df if df[col].nunique() > 1]]
+    
+    # Reduce the number of columns for matrix inversion in kernel density plots
+    columnNames = list(df)
+    if len(columnNames) > 10:
+        columnNames = columnNames[:10]
+        df = df[columnNames]
+    
+    # Create scatter matrix
+    ax = pd.plotting.scatter_matrix(
+        df,
+        alpha=0.75,
+        figsize=[plotSize, plotSize],
+        diagonal='kde'
+    )
+    
+    corrs = df.corr().values
+    for i, j in zip(*np.triu_indices_from(corrs, k=1)):
+        ax[i, j].annotate(
+            f'Corr. coef = {corrs[i, j]:.3f}',
+            (0.8, 0.2),
+            xycoords='axes fraction',
+            ha='center',
+            va='center',
+            size=textSize
+        )
+    
+    plt.suptitle('Scatter and Density Plot')
+    plt.show()
