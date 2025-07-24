@@ -1,0 +1,49 @@
+BEGIN AnomalyDetection
+  // Define normal behavior thresholds
+  INITIALIZE normalBehavior = {
+      "temperatureRange": [50, 100],
+      "pressureRange": [20, 80],
+      "flowRateRange": [10, 50]
+  }
+
+  // Function to detect anomalies
+  FUNCTION DetectAnomalies(sensorData):
+      detectedAnomalies = []
+      FOR EACH dataPoint IN sensorData:
+          IF dataPoint.temperature < normalBehavior.temperatureRange[0]
+             OR dataPoint.temperature > normalBehavior.temperatureRange[1] THEN
+              detectedAnomalies.append(dataPoint)
+          ELSE IF dataPoint.pressure < normalBehavior.pressureRange[0]
+             OR dataPoint.pressure > normalBehavior.pressureRange[1] THEN
+              detectedAnomalies.append(dataPoint)
+          ELSE IF dataPoint.flowRate < normalBehavior.flowRateRange[0]
+             OR dataPoint.flowRate > normalBehavior.flowRateRange[1] THEN
+              detectedAnomalies.append(dataPoint)
+          END IF
+      END FOR
+      RETURN detectedAnomalies
+  END FUNCTION
+
+  // Main process
+  sensorData = GET sensor data
+  anomalies = DetectAnomalies(sensorData)
+  IF anomalies IS NOT EMPTY THEN
+      ALERT "Anomalies detected:", anomalies
+  ELSE
+      PRINT "No anomalies detected."
+  END IF
+END AnomalyDetection
+
+Example Input:
+sensorData = [
+    {"temperature": 55, "pressure": 25, "flowRate": 15},
+    {"temperature": 45, "pressure": 85, "flowRate": 20},
+    {"temperature": 60, "pressure": 30, "flowRate": 55},
+    {"temperature": 70, "pressure": 50, "flowRate": 40}
+]
+
+Example Output:
+Anomalies detected: [
+    {"temperature": 45, "pressure": 85, "flowRate": 20},
+    {"temperature": 60, "pressure": 30, "flowRate": 55}
+]
