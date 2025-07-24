@@ -1,0 +1,31 @@
+# Define known attack signatures
+attackSignatures = ["Signature1", "Signature2", "Signature3"]
+
+# Function to detect misuse
+def DetectMisuse(systemLogs):
+    detectedMisuse = []
+    for logEntry in systemLogs:
+        for signature in attackSignatures:
+            if signature in logEntry:
+                detectedMisuse.append(logEntry)
+                break  # Avoid duplicate detections if multiple signatures match
+    return detectedMisuse
+
+# Example Input
+systemLogs = [
+    "User login from IP 192.168.0.1- Signature1 detected",
+    "User access to control panel- normal operation",
+    "Unauthorized command execution- Signature2 detected",
+    "System reboot- normal operation"
+]
+
+# Main process
+misuseIncidents = DetectMisuse(systemLogs)
+if misuseIncidents:
+    print("Misuse detected:", misuseIncidents)
+else:
+    print("No misuse detected.")
+
+Expected Output:
+Misuse detected: ['User login from IP 192.168.0.1- Signature1 detected',
+'Unauthorized command execution- Signature2 detected']
